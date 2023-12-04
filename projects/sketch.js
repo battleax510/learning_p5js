@@ -1,4 +1,10 @@
 let isMouthOpen = false;
+let pacmanChompSound;
+
+//load the sound during the page load
+function preload() {
+    pacmanChompSound = loadSound("pacman.chomp.mp3")
+}
 
 function setup() {
     createCanvas(400, 400);
@@ -38,12 +44,13 @@ function drawHead() {
     }
 }
 
-function keyPressed() {
-    if (key === ' ') {
-        toggleMouth();
-    }
-}
+// function keyPressed() {
+//     if (key === ' ') {
+//         toggleMouth();
+//     }
+// }
 
 function toggleMouth() {
     isMouthOpen = !isMouthOpen;
+    pacmanChompSound.play();
 }
