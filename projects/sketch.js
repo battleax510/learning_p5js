@@ -1,50 +1,49 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const canvas = document.getElementById("talking-head");
-    const context = canvas.getContext("2d");
-    const mouthControlButton = document.getElementById("mouth-control");
+let isMouthOpen = false;
 
-    let isMouthOpen = false;
+function setup() {
+    createCanvas(400, 400);
+}
 
-    mouthControlButton.addEventListener("click", toggleMouth);
+function draw() {
+    background(255);
+    drawHead();
+}
 
-    function drawHead() {
-        context.clearRect(0, 0, canvas.width, canvas.height);
+function drawHead() {
+    // Draw head with brown fill
+    fill(139, 69, 19); // RGB values for brown
+    stroke(0);
+    ellipse(width / 2, height / 2, 200, 200);
 
-        // Draw head
-        context.beginPath();
-        context.arc(canvas.width / 2, canvas.height / 2, 100, 0, 2 * Math.PI);
-        context.stroke();
+    // Draw eyes
+    ellipse(width / 2 - 40, height / 2 - 30, 20, 20);
+    ellipse(width / 2 + 40, height / 2 - 30, 20, 20);
 
-        // Draw eyes
-        context.beginPath();
-        context.arc(canvas.width / 2 - 40, canvas.height / 2 - 30, 10, 0, 2 * Math.PI);
-        context.stroke();
-        context.beginPath();
-        context.arc(canvas.width / 2 + 40, canvas.height / 2 - 30, 10, 0, 2 * Math.PI);
-        context.stroke();
+    // Draw nose
+    line(width / 2 - 5, height / 2 + 10, width / 2 + 5, height / 2 + 10);
 
-        // Draw nose
-        context.beginPath();
-        context.moveTo(canvas.width / 2 - 5, canvas.height / 2 + 10);
-        context.lineTo(canvas.width / 2 + 5, canvas.height / 2 + 10);
-        context.stroke();
-
-        // Draw mouth
-        const mouthHeight = isMouthOpen ? 20 : 5;
-        context.beginPath();
-        context.arc(canvas.width / 2, canvas.height / 2 + 30, 50, 0, Math.PI, false);
-        context.lineTo(canvas.width / 2 - 50, canvas.height / 2 + 30);
-        context.lineTo(canvas.width / 2 + 50, canvas.height / 2 + 30);
-        context.closePath();
-        context.fillStyle = "#f00";
-        context.fill();
-        context.stroke();
+    // Draw mouth
+    if (isMouthOpen) {
+        ellipse(width / 2, height / 2 + 30, 60, 20);
+    } else {
+        // Slightly curved line for closed mouth
+        noFill();
+        beginShape();
+        curveVertex(width / 2 - 30, height / 2 + 30);
+        curveVertex(width / 2 - 15, height / 2 + 30);
+        curveVertex(width / 2, height / 2 + 25);
+        curveVertex(width / 2 + 15, height / 2 + 30);
+        curveVertex(width / 2 + 30, height / 2 + 30);
+        endShape();
     }
+}
 
-    function toggleMouth() {
-        isMouthOpen = !isMouthOpen;
-        drawHead();
+function keyPressed() {
+    if (key === ' ') {
+        toggleMouth();
     }
+}
 
-    drawHead(); // Initial drawing
-});
+function toggleMouth() {
+    isMouthOpen = !isMouthOpen;
+}

@@ -18,7 +18,7 @@ body {
 
 #mouth-control {
     display: block;
-    margin-top: 10px;
+    margin-top: 20px; /* Adjusted margin for more space below the talking head */
     margin-left: auto;
     margin-right: auto;
     padding: 10px;

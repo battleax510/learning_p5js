@@ -12,22 +12,30 @@ the third part is for the javascript this file should be named sketch.js
 all files should be added to the html file so they can be accessible
 
 the button should be below the talking head so the button doesn't cover the talking head
+
+Next we will add a function to the button so the button simulates the mouth of the talking head to
+open and close
+
+
+Toggle Mouth button should be below the talking head
  -->
-
-
  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="sketch.js"></script>
-    <title>Talking Head Simulator</title>
-</head>
-<body>
-    <div class="canvas-container">
+ <html lang="en">
+   <head>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="style.css">
+     <meta charset="utf-8" />
+ 
+   </head>
+   <body>
+     <main>
+      <div class="canvas-container">
         <canvas id="talking-head"></canvas>
         <button id="mouth-control">Toggle Mouth</button>
     </div>
-</body>
-</html>
+     </main>
+     <script src="sketch.js"></script>
+   </body>
+ </html>
+ 
