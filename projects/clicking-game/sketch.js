@@ -11,7 +11,7 @@ function preload() {
 
 function setup() {
   createCanvas(600, 400);
-  ball = createVector(random(r, width - r), random(r, height - r));
+  gameReset();
 }
 
 function draw() {
@@ -50,6 +50,13 @@ function checkGameFinish() {
   } 
 }
 
+/** a functional approach to reseting the game */
+function gameReset() {
+  ball = createVector(random(r, width - r), random(r, height - r));
+  points = 0;
+  timer = 5;
+  loop();
+}
   
 function checkBallClick() {
   let d = dist(mouseX, mouseY, ball.x, ball.y);
