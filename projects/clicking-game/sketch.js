@@ -2,9 +2,11 @@ let r = 15;
 let points = 0;
 let timer = 5;
 let beepSound;
+let finishSound;
 
 function preload() {
   beepSound = loadSound('path/to/your/beep-sound.mp3'); // Replace with your sound file
+  finishSound =loadSound('path/to/your/beep-sound.mp3'); 
 }
 
 function setup() {
@@ -32,7 +34,7 @@ function draw() {
     textAlign(CENTER);
     textSize(50);
     text('FINISH', width / 2, height / 2);
-  }
+  } finishSound.play()
 }
 
 function mousePressed() {
