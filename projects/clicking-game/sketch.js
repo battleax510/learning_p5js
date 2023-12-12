@@ -32,16 +32,7 @@ function draw() {
 }
 
 function mousePressed() {
-  let d = dist(mouseX, mouseY, ball.x, ball.y);
-  if (d < r) {
-    ball = createVector(random(r, width - r), random(r, height - r));
-    points++;
-    if (points > 1) {
-      timer += 0.5;
-    }
-    // Play the beep sound
-    beepSound.play();
-  }
+  checkBallClick();
 }
 
 function displayScore() {
@@ -57,5 +48,18 @@ function checkGameFinish() {
     text('FINISH', width / 2, height / 2);
     finishSound.play();
   } 
+function checkBallClick() {
+  let d = dist(mouseX, mouseY, ball.x, ball.y);
+  if (d < r) {
+    ball = createVector(random(r, width - r), random(r, height - r));
+    points++;
+    if (points > 1) {
+      timer += 0.5;
+    }
+    // Play the beep sound
+    beepSound.play();
+  }
+}
+
 }
 
