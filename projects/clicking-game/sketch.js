@@ -16,8 +16,7 @@ function setup() {
 
 function draw() {
   background(220);
-  textSize(20);
-  text(points, 20, 30);
+
 
   player = createVector(mouseX, mouseY);
   ellipse(ball.x, ball.y, r * 2);
@@ -48,4 +47,9 @@ function mousePressed() {
     // Play the beep sound
     beepSound.play();
   }
+}
+
+function displayScore() {
+  textSize(20);
+  text(points, 20, 30);
 }
