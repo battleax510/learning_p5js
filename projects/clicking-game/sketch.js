@@ -48,6 +48,9 @@ function checkGameFinish() {
     text('FINISH', width / 2, height / 2);
     finishSound.play();
   } 
+}
+
+  
 function checkBallClick() {
   let d = dist(mouseX, mouseY, ball.x, ball.y);
   if (d < r) {
@@ -60,6 +63,3 @@ function checkBallClick() {
     beepSound.play();
   }
 }
-
-}
-
