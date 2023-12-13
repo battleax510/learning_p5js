@@ -17,19 +17,17 @@ function setup() {
 function draw() {
   background(220);
   displayScore();
+  updateTimer();
+  displayTimer();
   checkGameFinish();
-  player = createVector(mouseX, mouseY);
-  ellipse(ball.x, ball.y, r * 2);
-
-  if (timer > 0 && points > 0) {
-    timer -= 1 / 60;
-  }
-
-  let len = map(timer, 0, 10, 0, 200);
-  rect(15, 50, 20, len);
-
-
+ displayBall();
 }
+
+  
+function displayTimer() {
+    let len = map(timer, 0, 10, 0, 200);
+    rect(15, 50, 20, len);
+  }
 
 function mousePressed() {
   checkBallClick();
@@ -69,4 +67,17 @@ function checkBallClick() {
     // Play the beep sound
     beepSound.play();
   }
+}
+
+
+function updateTimer() {
+  if(timer > 0 && points > 0) {
+    timer -= 1 / 60;
+  } 
+}
+
+
+function displayBall() {
+  player = createVector(mouseX, mouseY);
+  ellipse(ball.x, ball.y, r * 2);
 }
