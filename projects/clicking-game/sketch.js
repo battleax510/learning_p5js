@@ -94,3 +94,9 @@ function displayBall() {
   player = createVector(mouseX, mouseY);
   ellipse(ball.x, ball.y, r * 2);
 }
+
+function startGame() {
+  console.log('Game Started');
+  startButton.hide();
+  gameStarted = true;
+}
