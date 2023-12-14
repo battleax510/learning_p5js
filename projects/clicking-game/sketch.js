@@ -15,7 +15,7 @@ function preload() {
 function setup() {
   let canvas = createCanvas(600, 400); 
   centerCanvas();
-  backgroundMusic.play();
+
   startButton = createButton('Start Game');
   startButton.position(width / 2 - 50, height / 2 -15);
   startButton.mousePressed(startGame);
@@ -24,6 +24,7 @@ function setup() {
 function draw() {
   background(220);
   if(gameStarted) {
+  backgroundMusic.play();
   displayScore();
   updateTimer();
   displayTimer();
