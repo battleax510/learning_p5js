@@ -4,6 +4,7 @@ let timer = 5;
 let beepSound;
 let finishSound;
 let backgroundMusic;
+let gameStarted = false;
 
 function preload() {
   beepSound = loadSound('path/to/your/beep-sound.mp3'); // Replace with your sound file
