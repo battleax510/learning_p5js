@@ -8,8 +8,15 @@
 
   </head>
   <body>
+    <button id="startButton"> Start Game </button>
     <main>
     </main>
     <script src="sketch.js"></script>
+    <script>
+      /**
+       * Calls the setup function when the start game button is clicked 
+       */
+      document.getElementById('startButton').addEventListener('click', function() { setup();})
+    </script>
   </body>
 </html>
