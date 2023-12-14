@@ -3,15 +3,18 @@ let points = 0;
 let timer = 5;
 let beepSound;
 let finishSound;
+let backgroundMusic;
 
 function preload() {
   beepSound = loadSound('path/to/your/beep-sound.mp3'); // Replace with your sound file
   finishSound =loadSound('path/to/your/beep-sound.mp3'); 
+  backgroundMusic = loadSound('path/to/your/background-music.webm');
 }
 
 function setup() {
-  createCanvas(600, 400);
+  createCanvas(600, 400); 
   gameReset();
+  backgroundMusic.play();
 }
 
 function draw() {
@@ -20,7 +23,7 @@ function draw() {
   updateTimer();
   displayTimer();
   checkGameFinish();
- displayBall();
+  displayBall();
 }
 
   
@@ -45,6 +48,8 @@ function checkGameFinish() {
     textSize(50);
     text('FINISH', width / 2, height / 2);
     finishSound.play();
+    // Stop the music when the background msuic is completed
+    backgroundMusic.stop();
   } 
 }
 
