@@ -8,6 +8,7 @@ let ball; // Declare ball variable
 let player; // Declare player variable
 let startButton;
 
+let canvasClickable = false; // Initially is set to false
 
 
 function preload() {
@@ -18,12 +19,11 @@ function preload() {
 
 function setup() {
   createCanvas(600, 400); 
-  gameReset();
+  initializeGame();
   startButton = createButton('Start Game');
   startButton.position(width / 2 - startButton.width / 2, height / 2 - startButton.height / 2);
   startButton.mousePressed(startGame);
   backgroundMusic.play();
-  ball = new Ball();
   
 }
 
@@ -32,7 +32,10 @@ function draw() {
   displayScore();
   updateTimer();
   displayTimer();
-  ball.display();
+  if(canvasClickable){
+    ball.display();
+    checkBallClick();
+  }
   checkGameFinish();
 }
 
@@ -42,7 +45,10 @@ function displayTimer() {
 }
 
 function mousePressed() {
-  checkBallClick();
+  // Disable canvas click if the game hasn't started
+  if(canvasClickable) {
+    checkBallClick();
+  }
 }
 
 function displayScore() {
@@ -60,14 +66,6 @@ function checkGameFinish() {
     // Stop the music when the background music is completed
     backgroundMusic.stop();
   } 
-}
-
-/** a functional approach to resetting the game */
-function gameReset() {
-  ball = new Ball();
-  points = 0;
-  timer = 5;
-  loop();
 }
 
 function checkBallClick() {
@@ -92,7 +90,8 @@ function updateTimer() {
 
 function startGame() {
   startButton.hide();
-  gameReset();
+  initializeGame();
+  canvasClickable = true;
   loop();
 }
 
@@ -109,4 +108,12 @@ function Ball() {
     fill(255, 0, 0);
     ellipse(this.x, this.y, this.radius * 2, this.radius * 2);
   };
+}
+
+function initializeGame() {
+  ball = new Ball();
+  points = 0;
+  timer = 5;
+  canvasClickable = false;
+  loop();
 }
