@@ -1,49 +1,48 @@
 let r = 15;
 let points = 0;
 let timer = 5;
-let beepSound;
+let poppingSound;
 let finishSound;
 let backgroundMusic;
-let gameStarted = false;
+let ball; // Declare ball variable
+let player; // Declare player variable
+let startButton;
+
+
 
 function preload() {
-  beepSound = loadSound('path/to/your/beep-sound.mp3'); // Replace with your sound file
-  finishSound =loadSound('path/to/your/beep-sound.mp3'); 
-  backgroundMusic = loadSound('path/to/your/background-music.webm');
+  poppingSound = loadSound('pop.wav'); // Replace with your sound file
+  finishSound = loadSound('mario.party.finish.theme.wav'); 
+  backgroundMusic = loadSound('pvz.short.webm');
 }
 
 function setup() {
-  let canvas = createCanvas(600, 400); 
-  centerCanvas();
-
+  createCanvas(600, 400); 
+  gameReset();
   startButton = createButton('Start Game');
-  startButton.position(width / 2 - 50, height / 2 -15);
+  startButton.position(width / 2 - startButton.width / 2, height / 2 - startButton.height / 2);
   startButton.mousePressed(startGame);
+  backgroundMusic.play();
+  ball = new Ball();
+  
 }
 
 function draw() {
   background(220);
-  if(gameStarted) {
-  backgroundMusic.play();
   displayScore();
   updateTimer();
   displayTimer();
+  ball.display();
   checkGameFinish();
-  displayBall();
-  }
-  
 }
 
-  
 function displayTimer() {
-    let len = map(timer, 0, 10, 0, 200);
-    rect(15, 50, 20, len);
-  }
+  let len = map(timer, 0, 10, 0, 200);
+  rect(15, 50, 20, len);
+}
 
 function mousePressed() {
-  if(gameStarted){
-    checkBallClick();
-  }
+  checkBallClick();
 }
 
 function displayScore() {
@@ -58,32 +57,31 @@ function checkGameFinish() {
     textSize(50);
     text('FINISH', width / 2, height / 2);
     finishSound.play();
-    // Stop the music when the background msuic is completed
+    // Stop the music when the background music is completed
     backgroundMusic.stop();
   } 
 }
 
-/** a functional approach to reseting the game */
+/** a functional approach to resetting the game */
 function gameReset() {
-  ball = createVector(random(r, width - r), random(r, height - r));
+  ball = new Ball();
   points = 0;
   timer = 5;
   loop();
 }
-  
+
 function checkBallClick() {
   let d = dist(mouseX, mouseY, ball.x, ball.y);
   if (d < r) {
-    ball = createVector(random(r, width - r), random(r, height - r));
+    ball = new Ball();
     points++;
     if (points > 1) {
       timer += 0.5;
     }
     // Play the beep sound
-    beepSound.play();
+    poppingSound.play();
   }
 }
-
 
 function updateTimer() {
   if(timer > 0 && points > 0) {
@@ -92,13 +90,23 @@ function updateTimer() {
 }
 
 
-function displayBall() {
-  player = createVector(mouseX, mouseY);
-  ellipse(ball.x, ball.y, r * 2);
+function startGame() {
+  startButton.hide();
+  gameReset();
+  loop();
 }
 
-function startGame() {
-  console.log('Game Started');
-  startButton.hide();
-  gameStarted = true;
+function Ball() {
+  this.resetPosition = function() {
+    this.x = random(r, width - r);
+    this.y = random(r, height - r);
+  };
+
+  this.resetPosition(); // Initial position
+  this.radius = r;
+
+  this.display = function() {
+    fill(255, 0, 0);
+    ellipse(this.x, this.y, this.radius * 2, this.radius * 2);
+  };
 }
