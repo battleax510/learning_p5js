@@ -11,7 +11,12 @@ let startButton;
 let canvasClickable = false; // Initially is set to false
 
 
+let mosaicSize = 20;
+let tileColor;
+
 function preload() {
+  mosaicImage =
+
   poppingSound = loadSound('pop.wav'); // Replace with your sound file
   finishSound = loadSound('mario.party.finish.theme.wav'); 
   backgroundMusic = loadSound('pvz.short.webm');
@@ -19,6 +24,7 @@ function preload() {
 
 function setup() {
   createCanvas(600, 400); 
+
   initializeGame();
   startButton = createButton('Start Game');
   startButton.position(width / 2 - startButton.width / 2, height / 2 - startButton.height / 2);
@@ -28,7 +34,15 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(255);
+  for (let x = 0; x < width; x += mosaicSize) {
+    for (let y = 0; y < height; y += mosaicSize) {
+      tileColor = color(random(255), random(255), random(255)); // Random color for each tile
+      fill(tileColor);
+      square(x,y,mosaicSize)
+    }
+  }
+
   displayScore();
   updateTimer();
   displayTimer();
@@ -104,7 +118,7 @@ function Ball() {
   this.radius = r;
 
   this.display = function() {
-    fill(255, 0, 0);
+    fill('white');
     ellipse(this.x, this.y, this.radius * 2, this.radius * 2);
   };
 }
@@ -114,5 +128,5 @@ function initializeGame() {
   points = 0;
   timer = 5;
   canvasClickable = false;
-  loop();
+  noLoop();
 }
