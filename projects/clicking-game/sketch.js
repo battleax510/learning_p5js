@@ -24,7 +24,7 @@ function setup() {
   startButton.position(width / 2 - startButton.width / 2, height / 2 - startButton.height / 2);
   startButton.mousePressed(startGame);
   backgroundMusic.play();
-  
+  backgroundMusic.setLoop(true);
 }
 
 function draw() {
@@ -46,11 +46,10 @@ function displayTimer() {
 
 function mousePressed() {
   // Disable canvas click if the game hasn't started
-  if(canvasClickable) {
+  if (canvasClickable && mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
     checkBallClick();
   }
 }
-
 function displayScore() {
   textSize(20);
   text(points, 20, 30);
