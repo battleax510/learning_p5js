@@ -13,7 +13,7 @@ let colorChangeDelay = 30;
 // adjust the delay value to control color change speed
 
 function preload() {
-
+  backgroundImage = loadImage('codioful.formerly.gradienta.jpeg');
   poppingSound = loadSound('pop.wav'); // Replace with your sound file
   finishSound = loadSound('mario.party.finish.theme.wav'); 
   backgroundMusic = loadSound('pvz.short.webm');
@@ -32,14 +32,15 @@ function setup() {
 
 function draw() {
   background(255);
-  frameRate(colorChangeDelay);
-  for (let x = 0; x < width; x += mosaicSize) {
-    for (let y = 0; y < height; y += mosaicSize) {
-      tileColor = color(random(255), random(255), random(255)); // Random color for each tile
-      fill(tileColor);
-      square(x,y,mosaicSize)
-    }
-  }
+  background(backgroundImage);
+  // frameRate(colorChangeDelay);
+  // for (let x = 0; x < width; x += mosaicSize) {
+  //   for (let y = 0; y < height; y += mosaicSize) {
+  //     tileColor = color(random(255), random(255), random(255)); // Random color for each tile
+  //     fill(tileColor);
+  //     square(x,y,mosaicSize)
+  //   }
+  // }
 
   displayScore();
   updateTimer();
@@ -79,5 +80,12 @@ function checkBallClick() {
     }
   }
   
-  
+  function initializeGame() {
+    ball = new Ball();
+    points = 0;
+    timer = 5;
+    canvasClickable = false;
+    noLoop();
+}
+
 
