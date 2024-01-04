@@ -1,0 +1,25 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.canvas-container {
+    position: relative;
+}
+
+#talking-head {
+    border: 2px solid #000;
+    width: 200px;
+    height: 200px;
+}
+
+#mouth-control {
+    display: block;
+    margin-top: 20px; /* Adjusted margin for more space below the talking head */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
