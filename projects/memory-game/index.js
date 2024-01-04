@@ -87,6 +87,7 @@ function resetBoard() {
   firstCard = null;
   secondCard = null;
   lockBoard = false;
+  
 }
 
 function restart() {
