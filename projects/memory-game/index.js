@@ -55,10 +55,7 @@ function flipCard() {
   }
 
   secondCard = this;
-  score++;
-  document.querySelector(".score").textContent = score;
-  lockBoard = true;
-
+  
   checkForMatch();
 }
 
@@ -66,6 +63,17 @@ function checkForMatch() {
   let isMatch = firstCard.dataset.name === secondCard.dataset.name;
 
   isMatch ? disableCards() : unflipCards();
+  if(isMatch){
+    score++;
+    document.querySelector(".score").textContent = score;
+    lockBoard = true;
+    console.log("Correct");
+  } else{
+    // firstCard.classList.remove("flipped");
+    // secondCard.classList.remove("flipped");
+    console.log("Incorrect");
+  }
+  
 }
 
 function disableCards() {
