@@ -25,12 +25,6 @@ function flipCard() {
     isMatch ? disableCards() : unflipCards();
   }
   
-  function disableCards() {
-    firstCard.removeEventListener("click", flipCard);
-    secondCard.removeEventListener("click", flipCard);
-  
-    resetBoard();
-  }
   
   function disableCards() {
     firstCard.removeEventListener("click", flipCard);

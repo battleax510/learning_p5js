@@ -63,7 +63,5 @@ function shuffleCards() {
 
 
 
-  In practice, you might use createCardElement when you need to create a card element separately, perhaps for a different purpose or when you want to encapsulate the card creation logic in a modular way. On the other hand, generateCards is more tailored for the specific scenario of populating the grid with card elements.
-
-The two functions could complement each other, where createCardElement is called within generateCards for each card, providing a clear structure and separation of concerns.
+  
 */
