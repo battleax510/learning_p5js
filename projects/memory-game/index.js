@@ -55,7 +55,7 @@ function flipCard() {
   }
 
   secondCard = this;
-  
+  lockBoard = true;
   checkForMatch();
 }
 
@@ -66,14 +66,7 @@ function checkForMatch() {
   if(isMatch){
     score++;
     document.querySelector(".score").textContent = score;
-    lockBoard = true;
-    console.log("Correct");
-  } else{
-    // firstCard.classList.remove("flipped");
-    // secondCard.classList.remove("flipped");
-    console.log("Incorrect");
   }
-  
 }
 
 function disableCards() {
@@ -105,4 +98,4 @@ function restart() {
   document.querySelector(".score").textContent = score;
   gridContainer.innerHTML = "";
   generateCards();
-}
+ }
