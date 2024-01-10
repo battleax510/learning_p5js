@@ -1,7 +1,7 @@
 [
     {
-        "image": "../assets/chili.png",
-        "name": "chili"
+        "image": "../assets/banana.png",
+        "name": "banana"
     },
     {
         "image": "../assets/grapes.png",
@@ -12,7 +12,7 @@
         "name": "lemon"
     },
     {
-        "image": "../assets/orange.png",
+        "image": "../assets/M's_orange.png",
         "name": "orange"
     },
     {
@@ -20,7 +20,7 @@
         "name": "pineapple"
     },
     {
-        "image": "../assets/strawberry.png",
+        "image": "../assets/M's_strawberry.png",
         "name": "strawberry"
     },
     {
