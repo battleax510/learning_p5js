@@ -6,6 +6,8 @@ let score = 0;
 
 document.querySelector(".score").textContent = score;
 
+const cardAudio = document.getElementById("cardAudio");
+
 fetch("./data/cards.json")
   .then((res) => res.json())
   .then((data) => {
@@ -45,6 +47,7 @@ function generateCards() {
 
 function flipCard() {
   if (lockBoard) return;
+  playCardAudio();
   if (this === firstCard) return;
 
   this.classList.add("flipped");
@@ -57,6 +60,7 @@ function flipCard() {
   secondCard = this;
   lockBoard = true;
   checkForMatch();
+
 }
 
 function checkForMatch() {
@@ -89,6 +93,9 @@ function resetBoard() {
   secondCard = null;
   lockBoard = false;
   
+}
+function playCardAudio() {
+  cardAudio.play();
 }
 
 function restart() {
