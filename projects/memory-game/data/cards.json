@@ -16,23 +16,23 @@
         "name": "orange"
     },
     {
-        "image": "../assets/pineapple.png",
-        "name": "pineapple"
+        "image": "../assets/Ms_watermelon.png",
+        "name": "watermelon"
     },
     {
         "image": "../assets/M's_strawberry.png",
         "name": "strawberry"
     },
     {
-        "image": "../assets/tomato.png",
-        "name": "tomato"
+        "image": "..assets/blueberries.png",
+        "name": "blueberries"
     },
     {
-        "image": "../assets/watermelon.png",
-        "name": "watermelon"
+        "image": "../assets/peach.png",
+        "name": "peach"
     },
     {
-        "image": "../assets/cherries.png",
-        "name": "cherries"
+        "image": "../assets/pomegranate.png",
+        "name": "pomegranate"
     }
 ]
