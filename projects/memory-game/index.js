@@ -7,6 +7,8 @@ let score = 0;
 document.querySelector(".score").textContent = score;
 
 const cardAudio = document.getElementById("cardAudio");
+// Add an Audio element for match
+const matchAudio = document.getElementById("matchAudio");
 
 fetch("./data/cards.json")
   .then((res) => res.json())
@@ -70,6 +72,8 @@ function checkForMatch() {
   if(isMatch){
     score++;
     document.querySelector(".score").textContent = score;
+  } else {
+    playMisMatchAudio.play();
   }
 }
 
@@ -94,6 +98,12 @@ function resetBoard() {
   lockBoard = false;
   
 }
+function playMatchAudio() {
+  // Play the match audio file
+  matchAudio.play();
+}
+
+
 function playCardAudio() {
   cardAudio.play();
 }
