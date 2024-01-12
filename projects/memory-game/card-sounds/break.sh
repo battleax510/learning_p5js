@@ -1,1 +1,1 @@
-ffmpeg -i $1 -f segment -segment_time 1 -c copy $1-%03d.wav
+ffmpeg -i $1 -f segment -segment_time 1 -c copy $1-%03d.webm
