@@ -24,7 +24,7 @@
         "name": "strawberry"
     },
     {
-        "image": "..assets/blueberries.png",
+        "image": "../assets/blueberries.png",
         "name": "blueberries"
     },
     {
