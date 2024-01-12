@@ -9,6 +9,8 @@ document.querySelector(".score").textContent = score;
 const cardAudio = document.getElementById("cardAudio");
 // Add an Audio element for match
 const matchAudio = document.getElementById("matchAudio");
+// Add an Audio Element for mismatch
+const noMatchAudio = document.getElementById("noMatchAudio");
 
 fetch("./data/cards.json")
   .then((res) => res.json())
@@ -69,11 +71,12 @@ function checkForMatch() {
   let isMatch = firstCard.dataset.name === secondCard.dataset.name;
 
   isMatch ? disableCards() : unflipCards();
-  if(isMatch){
+  if(isMatch) {
     score++;
     document.querySelector(".score").textContent = score;
+    playMatchAudio();
   } else {
-    playMisMatchAudio.play();
+    playNoMatchAudio();
   }
 }
 
@@ -103,6 +106,9 @@ function playMatchAudio() {
   matchAudio.play();
 }
 
+function playNoMatchAudio() {
+  noMatchAudio.play();
+}
 
 function playCardAudio() {
   cardAudio.play();
