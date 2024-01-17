@@ -11,6 +11,9 @@ const cardAudio = document.getElementById("cardAudio");
 const matchAudio = document.getElementById("matchAudio");
 // Add an Audio Element for mismatch
 const noMatchAudio = document.getElementById("noMatchAudio");
+// Add an AUdio Element for mismatch
+const badAppleAudio = document.getElementById("badAppleAudio");
+
 
 fetch("./data/cards.json")
   .then((res) => res.json())
