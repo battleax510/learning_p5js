@@ -13,7 +13,10 @@ const matchAudio = document.getElementById("matchAudio");
 const noMatchAudio = document.getElementById("noMatchAudio");
 // Add an AUdio Element for mismatch
 const badAppleAudio = document.getElementById("badAppleAudio");
-
+// Adding  an audio element for when level is complete
+const levelCompleteAudio = document.getElementById("levelCompleteAudio");
+// Adding an audio element for user gets a matching bad apple
+const instantGameOverAudio = document.getElementById("instantGameOver");
 
 fetch("./data/cards.json")
   .then((res) => res.json())
@@ -72,7 +75,10 @@ function flipCard() {
 
 function checkForMatch() {
   let isMatch = firstCard.dataset.name === secondCard.dataset.name;
-
+// In this section of the code I want to always have the
+// checkForMatch() function evaluating the card names for 
+// a specific match when that match event occurs the
+// audio will play
   isMatch ? disableCards() : unflipCards();
   if(isMatch) {
     score++;
@@ -81,6 +87,9 @@ function checkForMatch() {
   } else {
     playNoMatchAudio();
   }
+}
+function playInstantGameOverAudio() {
+  instantGameOverAudio.play();
 }
 
 function disableCards() {
@@ -117,6 +126,9 @@ function playCardAudio() {
   cardAudio.play();
 }
 
+function playlevelCompleteAudio() {
+  levelCompleteAudio.play();
+}
 function restart() {
   resetBoard();
   shuffleCards();
