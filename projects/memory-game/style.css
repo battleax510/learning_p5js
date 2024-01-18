@@ -47,7 +47,10 @@ p {
   transform-style: preserve-3d;
   transition: all 0.5s ease-in-out;
 }
-
+.legend {
+  display: flex;
+  align-items: center;
+}
 .front-image {
   width: 60px;
   height: 60px;
