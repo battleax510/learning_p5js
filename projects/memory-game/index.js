@@ -75,18 +75,35 @@ function flipCard() {
 
 function checkForMatch() {
   let isMatch = firstCard.dataset.name === secondCard.dataset.name;
-// In this section of the code I want to always have the
-// checkForMatch() function evaluating the card names for 
-// a specific match when that match event occurs the
-// audio will play
-  isMatch ? disableCards() : unflipCards();
-  if(isMatch) {
-    score++;
-    document.querySelector(".score").textContent = score;
-    playMatchAudio();
-  } else {
-    playNoMatchAudio();
+  switch (true) {
+    case isMatch && firstCard.dataset.name === "badApple":
+      playInstantGameOverAudio();
+      // Add logic to keep cards flipped and end the game
+      gridContainer.innerHTML = `
+      <p class="legend"> Game Over! </p>
+      <p class="legend">You matched the bad apple.</p> 
+      <p class="legend"><img class="front-image" src="./assets/bad_apple.png"> + <img class="front-image" src="./assets/bad_apple.png">=</p>
+      <p class="legend"> Game Over </p>
+      `;
+      break;
+    case isMatch:
+      score++;
+      document.querySelector(".score").textContent = score;
+      playMatchAudio();
+      isMatch ? disableCards() : unflipCards();
+      break;
+    default:
+      playNoMatchAudio();
+      unflipCards();
   }
+//   isMatch ? disableCards() : unflipCards();
+//   if(isMatch) {
+//     score++;
+//     document.querySelector(".score").textContent = score;
+//     playMatchAudio();
+//   } else {
+//     playNoMatchAudio();
+//   }
 }
 function playInstantGameOverAudio() {
   instantGameOverAudio.play();
