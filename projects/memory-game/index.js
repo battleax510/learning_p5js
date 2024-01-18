@@ -90,7 +90,12 @@ function checkForMatch() {
       score++;
       document.querySelector(".score").textContent = score;
       playMatchAudio();
-      isMatch ? disableCards() : unflipCards();
+      if(score === (cards.length / 2 -1 )){
+        gridContainer.innerHTML= `You Win`;
+        playlevelCompleteAudio();
+      } else {
+        isMatch ? disableCards() : unflipCards();
+      }
       break;
     default:
       playNoMatchAudio();
