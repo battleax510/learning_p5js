@@ -17,6 +17,8 @@ const badAppleAudio = document.getElementById("badAppleAudio");
 const levelCompleteAudio = document.getElementById("levelCompleteAudio");
 // Adding an audio element for user gets a matching bad apple
 const instantGameOverAudio = document.getElementById("instantGameOver");
+const elevatorMusicAudio = document.getElementById("elevatorMusicAudio")
+
 
 fetch("./data/cards.json")
   .then((res) => res.json())
@@ -24,6 +26,7 @@ fetch("./data/cards.json")
     cards = [...data, ...data];
     shuffleCards();
     generateCards();
+ 
   });
 
 function shuffleCards() {
@@ -56,6 +59,7 @@ function generateCards() {
 }
 
 function flipCard() {
+  cueElevatorMusicAudio();
   if (lockBoard) return;
   playCardAudio();
   if (this === firstCard) return;
@@ -77,6 +81,7 @@ function checkForMatch() {
   let isMatch = firstCard.dataset.name === secondCard.dataset.name;
   switch (true) {
     case isMatch && firstCard.dataset.name === "badApple":
+      pauseElevatorMusicAudio();
       playInstantGameOverAudio();
       // Add logic to keep cards flipped and end the game
       gridContainer.innerHTML = `
@@ -89,9 +94,11 @@ function checkForMatch() {
     case isMatch:
       score++;
       document.querySelector(".score").textContent = score;
+      flickerBackground();
       playMatchAudio();
       if(score === (cards.length / 2 -1 )){
         gridContainer.innerHTML= `You Win`;
+        pauseElevatorMusicAudio();
         playlevelCompleteAudio();
       } else {
         isMatch ? disableCards() : unflipCards();
@@ -151,11 +158,26 @@ function playCardAudio() {
 function playlevelCompleteAudio() {
   levelCompleteAudio.play();
 }
+function cueElevatorMusicAudio() {
+  elevatorMusicAudio.play();
+}
+function pauseElevatorMusicAudio() {
+  elevatorMusicAudio.pause();
+}
+
+function flickerBackground() {
+  document.body.classList.add("flicker"); // Add a class for flickering
+  setTimeout(() => {
+    document.body.classList.remove("flicker"); // Remove the class after a short delay
+  }, 1000); // Adjust the duration as needed
+}
 function restart() {
   resetBoard();
   shuffleCards();
+  pauseElevatorMusicAudio();
   score = 0;
   document.querySelector(".score").textContent = score;
   gridContainer.innerHTML = "";
   generateCards();
+  cueElevatorMusicAudio();
  }
