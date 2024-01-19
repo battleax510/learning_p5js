@@ -105,6 +105,7 @@ function checkForMatch() {
       }
       break;
     default:
+      flickerBackgroundMismatch(); 
       playNoMatchAudio();
       unflipCards();
   }
@@ -164,9 +165,16 @@ function cueElevatorMusicAudio() {
 function pauseElevatorMusicAudio() {
   elevatorMusicAudio.pause();
 }
+function flickerBackgroundMismatch() {
+  document.body.classList.add("flicker-mismatch"); // Add a class for flickering
+  setTimeout(() => {
+    document.body.classList.remove("flicker-mismatch"); // Remove the class after a short delay
+  }, 1000); // Adjust the duration as needed
+}
 
 function flickerBackground() {
-  document.body.classList.add("flicker"); // Add a class for flickering
+  // Add a class for flickering
+  document.body.classList.add("flicker");   
   setTimeout(() => {
     document.body.classList.remove("flicker"); // Remove the class after a short delay
   }, 1000); // Adjust the duration as needed
