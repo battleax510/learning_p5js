@@ -97,7 +97,12 @@ function checkForMatch() {
       flickerBackground();
       playMatchAudio();
       if(score === (cards.length / 2 -1 )){
-        gridContainer.innerHTML= `You Win`;
+        gridContainer.style.display ='flex';
+        gridContainer.innerHTML= `
+        <div class="image-container">
+         <img src="./assets/youWin-screen.png" alt="Your Win Image">
+       </div>
+        `;
         pauseElevatorMusicAudio();
         playlevelCompleteAudio();
       } else {
@@ -109,14 +114,6 @@ function checkForMatch() {
       playNoMatchAudio();
       unflipCards();
   }
-//   isMatch ? disableCards() : unflipCards();
-//   if(isMatch) {
-//     score++;
-//     document.querySelector(".score").textContent = score;
-//     playMatchAudio();
-//   } else {
-//     playNoMatchAudio();
-//   }
 }
 function playInstantGameOverAudio() {
   instantGameOverAudio.play();
