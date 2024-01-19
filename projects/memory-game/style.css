@@ -4,7 +4,7 @@ body {
   background-color: #12181f;
   color: white;
   }
-  
+
 .flicker {
   animation: flicker 0.5s ease-in-out infinite; 
 }
@@ -128,4 +128,18 @@ p {
   100% {
     text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
   }
+}
+
+.grid-container .card .front-image {
+  width:  100%;
+  height: 100%;
+  object-fit: cover;
+}
+.image-container {
+  width: 65%;
+}
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
