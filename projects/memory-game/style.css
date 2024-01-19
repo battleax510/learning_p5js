@@ -3,10 +3,22 @@ body {
   min-width: 100vh;
   background-color: #12181f;
   color: white;
-  /* animation: flicker 0.5s ease-in-out infinite; Animation for flickering effect */
-}
+  }
+  
 .flicker {
   animation: flicker 0.5s ease-in-out infinite; 
+}
+
+.flicker-mismatch {
+  animation: flicker-mismatch 0.5s ease-in-out infinite; 
+}
+@keyframes flicker-mismatch {
+  0%, 100% {
+    background-color: #000; /* Start and end with the initial background color */
+  }
+  50% {
+    background-color: #ff1100; /* Set a different color during the flicker */
+  }
 }
 @keyframes flicker {
   0%, 100% {
