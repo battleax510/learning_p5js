@@ -18,7 +18,7 @@ const levelCompleteAudio = document.getElementById("levelCompleteAudio");
 // Adding an audio element for user gets a matching bad apple
 const instantGameOverAudio = document.getElementById("instantGameOver");
 const elevatorMusicAudio = document.getElementById("elevatorMusicAudio")
-
+elevatorMusicAudio.loop = true; // will allow the music to loop instead of ending...
 
 fetch("./data/cards.json")
   .then((res) => res.json())
