@@ -85,10 +85,11 @@ function checkForMatch() {
       playInstantGameOverAudio();
       // Add logic to keep cards flipped and end the game
       gridContainer.innerHTML = `
-      <p class="legend"> Game Over! </p>
       <p class="legend">You matched the bad apple.</p> 
       <p class="legend"><img class="front-image" src="./assets/bad_apple.png"> + <img class="front-image" src="./assets/bad_apple.png">=</p>
-      <p class="legend"> Game Over </p>
+      <div class="image-container">
+         <img src="./assets/gameOver-screen.png" alt="game over Image you got the bad apple">
+       </div>
       `;
       break;
     case isMatch:
