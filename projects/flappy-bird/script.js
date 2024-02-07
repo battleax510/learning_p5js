@@ -14,16 +14,15 @@ let score_val = document.querySelector('.score_val');
 let message = document.querySelector('.message');
 let score_title = document.querySelector('.score_title');
 
-// Super Hero Sounds
-const sound_one = new Audio("sounds_effect/pvz.super.brainz.voice.clips.IGE-Ht-rLJk.wav-037.wav");
-// Add an Audio element for match
-const sound_two = new Audio("sounds_effect/pvz.super.brainz.voice.clips.IGE-Ht-rLJk.wav-004.wav");
-// Add an Audio Element for mismatch
-const sound_three = new Audio("sounds_effect/pvz.super.brainz.voice.clips.IGE-Ht-rLJk.wav-028.wav");
-// Add an AUdio Element for mismatch
-const sound_four = new Audio("sounds_effect/pvz.super.brainz.voice.clips.IGE-Ht-rLJk.wav-081.wav");
-// Adding  an audio element for when level is complete
-const sound_five = new Audio("sounds_effect/pvz.super.brainz.voice.clips.IGE-Ht-rLJk.wav-018.wav");
+// In your main file
+import { soundPaths } from './core/core.sounds';
+
+
+const sound_one = new Audio(soundPaths.sound_one);
+const sound_two = new Audio(soundPaths.sound_two);
+const sound_three = new Audio(soundPaths.sound_three);
+const sound_four = new Audio(soundPaths.sound_four);
+const sound_five = new Audio(soundPaths.sound_five);
 
 const soundBox = [
     sound_one,
