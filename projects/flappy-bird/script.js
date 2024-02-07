@@ -15,16 +15,17 @@ let message = document.querySelector('.message');
 let score_title = document.querySelector('.score_title');
 
 // In your main file
-import { soundPaths } from './core/core.sounds';
+import { heroPerishSounds } from './core/core.hero.sounds';
+import { heroJumpSounds } from './core/core.hero.sounds';
 
 
-const sound_one = new Audio(soundPaths.sound_one);
-const sound_two = new Audio(soundPaths.sound_two);
-const sound_three = new Audio(soundPaths.sound_three);
-const sound_four = new Audio(soundPaths.sound_four);
-const sound_five = new Audio(soundPaths.sound_five);
+const sound_one = new Audio(heroPerishSounds.sound_one);
+const sound_two = new Audio(heroPerishSounds.sound_two);
+const sound_three = new Audio(heroPerishSounds.sound_three);
+const sound_four = new Audio(heroPerishSounds.sound_four);
+const sound_five = new Audio(heroPerishSounds.sound_five);
 
-const soundBox = [
+const heroSounds = [
     sound_one,
     sound_two,
     sound_three,
@@ -93,8 +94,8 @@ function play() {
                 } else {
                     if (pipe_sprite_props.right < bird_props.left && pipe_sprite_props.right + move_speed >= bird_props.left && element.increase_score == '1') {
                         score_val.innerHTML = + score_val.innerHTML + 1;
-                        let randomIndex = getRandomIndex(soundBox);
-                        randomAudioElement = soundBox[randomIndex];
+                        let randomIndex = getRandomIndex(heroSounds);
+                        randomAudioElement = heroSounds[randomIndex];
                         console.log(randomAudioElement)
                         randomAudioElement.play()
 
