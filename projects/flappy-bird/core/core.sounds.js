@@ -6,3 +6,4 @@ export const soundPaths = {
     sound_four: "sounds_effect/pvz.super.brainz.voice.clips.IGE-Ht-rLJk.wav-081.wav",
     sound_five: "sounds_effect/pvz.super.brainz.voice.clips.IGE-Ht-rLJk.wav-018.wav",
 };
+
