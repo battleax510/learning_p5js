@@ -1,4 +1,4 @@
-export const heroPersishSounds =  {
+export const heroPerishSounds =  {
     perish_zero: "sounds_effect/hero-perish-00.wav",
     perish_one: "sounds_effect/hero-perish-01.wav",
     perish_two: "sounds_effect/hero-perish-02.wav",
@@ -15,4 +15,3 @@ export const heroJumpSounds =  {
     jump_four: "sounds_effect/hero-jump-04.wav",
     jump_five: "sounds_effect/hero-jump-05.wav"
 } 
-
