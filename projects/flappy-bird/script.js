@@ -1,7 +1,9 @@
 import { heroJumpSounds } from './core/core.hero.sounds';
 import { heroPerishSounds } from './core/core.hero.sounds';
 
-
+const backgroundMusic = new Audio('sounds_effect/superman.guitar.theme.o7PuveYmEWU.wav');
+backgroundMusic.preload = 'auto';
+backgroundMusic.volume = 0.2; // Adjust the volume as needed
 
 let move_speed = 3, grativy = 0.5;
 let bird = document.querySelector('.bird');
@@ -9,7 +11,8 @@ let img = document.getElementById('bird-1');
 let flight_sound = new Audio('sounds_effect/flight-sound.wav');
 flight_sound.preload = 'auto';
 flight_sound.volume = 0.3;
-// let sound_die = new Audio('sounds_effect/die.mp3');
+backgroundMusic.pause();
+backgroundMusic.currentTime = 0;// let sound_die = new Audio('sounds_effect/die.mp3');
 
 // getting bird element properties
 let bird_props = bird.getBoundingClientRect();
@@ -83,6 +86,7 @@ message.classList.add('messageStyle');
 document.addEventListener('keydown', (e) => {
 
     if (e.key == 'Enter' && game_state != 'Play') {
+        
         document.querySelectorAll('.pipe_sprite').forEach((e) => {
             e.remove();
         });
@@ -94,6 +98,7 @@ document.addEventListener('keydown', (e) => {
         score_val.innerHTML = '0';
         message.classList.remove('messageStyle');
         play();
+        backgroundMusic.play();
     }
 });
 
@@ -118,6 +123,7 @@ function play() {
                     let randomIndex = getRandomIndex(perishSounds);
                     randomAudioElement = perishSounds[randomIndex];
                     console.log(randomAudioElement);
+              
                     randomAudioElement.play();
                     return;
                 } else {
@@ -160,6 +166,8 @@ function play() {
         if (bird_props.top <= 0 || bird_props.bottom >= background.bottom) {
             game_state = 'End';
             message.style.left = '28vw';
+            backgroundMusic.pause();
+            backgroundMusic.currentTime = 0;
             window.location.reload();
             message.classList.remove('messageStyle');
             return;
