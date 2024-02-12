@@ -1,8 +1,15 @@
+import { heroJumpSounds } from './core/core.hero.sounds';
+import { heroPerishSounds } from './core/core.hero.sounds';
+
+
+
 let move_speed = 3, grativy = 0.5;
 let bird = document.querySelector('.bird');
 let img = document.getElementById('bird-1');
-let sound_point = new Audio('sounds_effect/point.mp3');
-let sound_die = new Audio('sounds_effect/die.mp3');
+let flight_sound = new Audio('sounds_effect/flight-sound.wav');
+flight_sound.preload = 'auto';
+flight_sound.volume = 0.3;
+// let sound_die = new Audio('sounds_effect/die.mp3');
 
 // getting bird element properties
 let bird_props = bird.getBoundingClientRect();
@@ -15,23 +22,42 @@ let message = document.querySelector('.message');
 let score_title = document.querySelector('.score_title');
 
 // In your main file
-import { heroPerishSounds } from './core/core.hero.sounds';
-import { heroJumpSounds } from './core/core.hero.sounds';
+// import { heroJumpSounds } from './core/core.hero.sounds';
 
 
-const sound_one = new Audio(heroPerishSounds.sound_one);
-const sound_two = new Audio(heroPerishSounds.sound_two);
-const sound_three = new Audio(heroPerishSounds.sound_three);
-const sound_four = new Audio(heroPerishSounds.sound_four);
-const sound_five = new Audio(heroPerishSounds.sound_five);
+// Perish Sounds
+const sound_six = new Audio(heroPerishSounds.perish_zero);
+const sound_seven = new Audio(heroPerishSounds.perish_one);
+const sound_eight = new Audio(heroPerishSounds.perish_two);
+const sound_nine = new Audio(heroPerishSounds.perish_three);
+const sound_ten = new Audio(heroPerishSounds.perish_four);
+const sound_eleven = new Audio(heroPerishSounds.perish_five);
 
-const heroSounds = [
+// Jump Sounds
+const sound_one = new Audio(heroJumpSounds.jump_zero);
+const sound_two = new Audio(heroJumpSounds.jump_one);
+const sound_three = new Audio(heroJumpSounds.jump_two);
+const sound_four = new Audio(heroJumpSounds.jump_three);
+const sound_five = new Audio(heroJumpSounds.jump_four);
+
+const perishSounds = [
+    sound_six,
+    sound_seven,
+    sound_eight,
+    sound_nine,
+    sound_ten,
+    sound_eleven
+];
+
+
+
+const jumpSounds = [
     sound_one,
     sound_two,
     sound_three,
     sound_four,
     sound_five
-]
+];
 
 
 
@@ -88,14 +114,17 @@ function play() {
                     message.innerHTML = 'Game Over'.fontcolor('red') + '<br>Press Enter To Restart';
                     message.classList.add('messageStyle');
                     img.style.display = 'none';
-                    sound_die.play();
-
+                    // sound_die.play();
+                    let randomIndex = getRandomIndex(perishSounds);
+                    randomAudioElement = perishSounds[randomIndex];
+                    console.log(randomAudioElement);
+                    randomAudioElement.play();
                     return;
                 } else {
                     if (pipe_sprite_props.right < bird_props.left && pipe_sprite_props.right + move_speed >= bird_props.left && element.increase_score == '1') {
                         score_val.innerHTML = + score_val.innerHTML + 1;
-                        let randomIndex = getRandomIndex(heroSounds);
-                        randomAudioElement = heroSounds[randomIndex];
+                        let randomIndex = getRandomIndex(jumpSounds);
+                        randomAudioElement = jumpSounds[randomIndex];
                         console.log(randomAudioElement)
                         randomAudioElement.play()
 
@@ -116,6 +145,8 @@ function play() {
             if (e.key == 'ArrowUp' || e.key == ' ') {
                 img.src = 'images/superHero-2.png';
                 bird_dy = -7.6;
+                flight_sound.play();
+
 
             }
         });
