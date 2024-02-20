@@ -1,7 +1,7 @@
 import { heroJumpSounds } from './core/core.hero.sounds';
 import { heroPerishSounds } from './core/core.hero.sounds';
 
-const backgroundMusic = new Audio('sounds_effect/superman.guitar.theme.o7PuveYmEWU.wav');
+const backgroundMusic = new Audio('sounds_effect/ghost-house.supermario.world.wav');
 backgroundMusic.preload = 'auto';
 backgroundMusic.volume = 0.2; // Adjust the volume as needed
 
