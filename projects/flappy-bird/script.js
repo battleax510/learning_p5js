@@ -1,9 +1,12 @@
 import { heroJumpSounds } from './core/core.hero.sounds';
 import { heroPerishSounds } from './core/core.hero.sounds';
 
-const backgroundMusic = new Audio('sounds_effect/ghost-house.supermario.world.wav');
+import { ghostJumpSounds }  from './core/core.ghost,sounds';
+import { ghostPerishSounds } from './core/core.ghost,sounds';
+
+const backgroundMusic = new Audio('sounds_effect/ghostSounds/ghost-house.supermario.world.wav');
 backgroundMusic.preload = 'auto';
-backgroundMusic.volume = 0.2; // Adjust the volume as needed
+backgroundMusic.volume = 0.3; // Adjust the volume as needed
 
 let move_speed = 3, grativy = 0.5;
 let bird = document.querySelector('.bird');
@@ -17,7 +20,7 @@ backgroundMusic.currentTime = 0;// let sound_die = new Audio('sounds_effect/die.
 // getting bird element properties
 let bird_props = bird.getBoundingClientRect();
 
-// This method returns DOMReact -> top, right, bottom, left, x, y, width and height
+// This method returns DOMReact -> top, right, bottom_, left, x, y, width and height
 let background = document.querySelector('.background').getBoundingClientRect();
 
 let score_val = document.querySelector('.score_val');
@@ -25,10 +28,18 @@ let message = document.querySelector('.message');
 let score_title = document.querySelector('.score_title');
 
 // In your main file
-// import { heroJumpSounds } from './core/core.hero.sounds';
+// ghost Jump
+
+const sound_thirteen = new Audio(ghostJumpSounds.jump_zero)
+const sound_fourteen = new Audio(ghostJumpSounds.jump_one)
+const sound_fifthteen = new Audio(ghostJumpSounds.jump_two)
+const sound_sixteen = new Audio(ghostJumpSounds.jump_three)
+const sound_seventeen = new Audio(ghostJumpSounds.jump_four)
+
+const sound_twleve = new Audio(ghostPerishSounds.perish_zero);
 
 
-// Perish Sounds
+// Perish Sounds [HERO]
 const sound_six = new Audio(heroPerishSounds.perish_zero);
 const sound_seven = new Audio(heroPerishSounds.perish_one);
 const sound_eight = new Audio(heroPerishSounds.perish_two);
@@ -36,13 +47,14 @@ const sound_nine = new Audio(heroPerishSounds.perish_three);
 const sound_ten = new Audio(heroPerishSounds.perish_four);
 const sound_eleven = new Audio(heroPerishSounds.perish_five);
 
-// Jump Sounds
+// Jump Sounds [HERO]
 const sound_one = new Audio(heroJumpSounds.jump_zero);
 const sound_two = new Audio(heroJumpSounds.jump_one);
 const sound_three = new Audio(heroJumpSounds.jump_two);
 const sound_four = new Audio(heroJumpSounds.jump_three);
 const sound_five = new Audio(heroJumpSounds.jump_four);
 
+// Perish Sounds [HERO]
 const perishSounds = [
     sound_six,
     sound_seven,
@@ -53,7 +65,7 @@ const perishSounds = [
 ];
 
 
-
+ // Jump [HERO]
 const jumpSounds = [
     sound_one,
     sound_two,
@@ -61,6 +73,15 @@ const jumpSounds = [
     sound_four,
     sound_five
 ];
+
+const ghostJumpingSounds = [
+    sound_thirteen,
+    sound_fourteen,
+    sound_fifthteen,
+    sound_seventeen,
+    sound_sixteen
+];
+
 
 
 
@@ -120,17 +141,13 @@ function play() {
                     message.classList.add('messageStyle');
                     img.style.display = 'none';
                     // sound_die.play();
-                    let randomIndex = getRandomIndex(perishSounds);
-                    randomAudioElement = perishSounds[randomIndex];
-                    console.log(randomAudioElement);
-              
-                    randomAudioElement.play();
+                   sound_twleve.play();
                     return;
                 } else {
                     if (pipe_sprite_props.right < bird_props.left && pipe_sprite_props.right + move_speed >= bird_props.left && element.increase_score == '1') {
                         score_val.innerHTML = + score_val.innerHTML + 1;
-                        let randomIndex = getRandomIndex(jumpSounds);
-                        randomAudioElement = jumpSounds[randomIndex];
+                        let randomIndex = getRandomIndex(ghostJumpingSounds);
+                        randomAudioElement = ghostJumpingSounds[randomIndex];
                         console.log(randomAudioElement)
                         randomAudioElement.play()
 
