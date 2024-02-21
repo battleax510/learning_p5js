@@ -5,6 +5,7 @@ const backgroundMusic = new Audio('sounds_effect/superman.guitar.theme.o7PuveYmE
 backgroundMusic.preload = 'auto';
 backgroundMusic.volume = 0.2; // Adjust the volume as needed
 
+let player_select = document.querySelector('.player_select');
 let move_speed = 3, grativy = 0.5;
 let bird = document.querySelector('.bird');
 let img = document.getElementById('bird-1');
