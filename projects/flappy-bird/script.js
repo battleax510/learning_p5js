@@ -149,7 +149,7 @@ function play() {
         bird_dy = bird_dy + grativy;
         document.addEventListener('keydown', (e) => {
             if (e.key == 'ArrowUp' || e.key == ' ') {
-                img.src = 'images/superHero-2.png';
+                img.src = 'images/robot-2.png';
                 bird_dy = -7.6;
                 flight_sound.play();
 
@@ -159,7 +159,7 @@ function play() {
 
         document.addEventListener('keyup', (e) => {
             if (e.key == 'ArrowUp' || e.key == ' ') {
-                img.src = 'images/superHero-1.png';
+                img.src = 'images/robot-1.png';
             }
         });
 
