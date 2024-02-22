@@ -5,7 +5,7 @@ const backgroundMusic = new Audio('sounds_effect/superman.guitar.theme.o7PuveYmE
 backgroundMusic.preload = 'auto';
 backgroundMusic.volume = 0.2; // Adjust the volume as needed
 
-let player_select = document.querySelector('.player_select');
+
 let move_speed = 3, grativy = 0.5;
 let bird = document.querySelector('.bird');
 let img = document.getElementById('bird-1');
@@ -14,6 +14,8 @@ flight_sound.preload = 'auto';
 flight_sound.volume = 0.3;
 backgroundMusic.pause();
 backgroundMusic.currentTime = 0;// let sound_die = new Audio('sounds_effect/die.mp3');
+
+let game_state = 'playerSelect';
 
 // getting bird element properties
 let bird_props = bird.getBoundingClientRect();
@@ -79,15 +81,25 @@ let randomAudioIndex, randomAudioElement
 
 // Now you can use randomAudioElement for further actions (e.g., playing the random sound)
 
+message.style.display = 'none';
 
-let game_state = 'Start';
+
+let player_select = document.querySelector('.player-select-screen');
+player_select.classList.add('messageStyle');
+document.addEventListener('keyDown', (e) => {
+    if (e.key == 'Enter' && game_state == 'playerSelect') {
+        player_select.style.display = 'none';
+    }
+})
+
+game_state = 'Start';
 img.style.display = 'none';
 message.classList.add('messageStyle');
 
 document.addEventListener('keydown', (e) => {
 
     if (e.key == 'Enter' && game_state != 'Play') {
-        
+
         document.querySelectorAll('.pipe_sprite').forEach((e) => {
             e.remove();
         });
@@ -124,7 +136,7 @@ function play() {
                     let randomIndex = getRandomIndex(perishSounds);
                     randomAudioElement = perishSounds[randomIndex];
                     console.log(randomAudioElement);
-              
+
                     randomAudioElement.play();
                     return;
                 } else {
