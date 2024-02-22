@@ -83,3 +83,33 @@
 		width: 14vw;
 	}
 }
+.character-selection {
+    width: 8vw; /* Set the width to 4% of the viewport width */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0.5vw; /* Add some margin for spacing */
+    cursor: pointer; /* Set cursor to pointer for better interaction */
+	border: 2px solid transparent;
+	transition: border-color 0.3s ease, transform 0.5s ease;
+	animation: floatLoop 2s infinite;
+}
+
+.character-selection:hover {
+	border-color: lightblue;
+	transform: translateY(-5px);
+	animation: none; 
+}
+.player-select-screen {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	position: absolute;
+	z-index: 10;
+	color: black;
+	top: 30%;
+	left: 50%;
+	font-size: 2em;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
