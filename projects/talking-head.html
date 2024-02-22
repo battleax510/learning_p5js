@@ -1,0 +1,41 @@
+<!-- 
+
+The Talking head simulator will use shapes to create a simple head with eyes nose and mouth.
+The mouth will open by increasing the size of the mouth and decresing the mouth.
+A button will be available on the canvas with the talking head when press will open and close the mouth.
+
+Please create the initial script for us to start this process. 
+The scripts should be in three parts
+one part is for the HTML 
+second part is the CSS
+the third part is for the javascript this file should be named sketch.js
+all files should be added to the html file so they can be accessible
+
+the button should be below the talking head so the button doesn't cover the talking head
+
+Next we will add a function to the button so the button simulates the mouth of the talking head to
+open and close
+
+
+Toggle Mouth button should be below the talking head
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="style.css">
+     <meta charset="utf-8" />
+ 
+   </head>
+   <body>
+     <main>
+      <div class="canvas-container">
+        <canvas id="talking-head"></canvas>
+        <button onclick="toggleMouth()">Toggle Mouth</button>
+    </div>
+     </main>
+     <script src="sketch.js"></script>
+   </body>
+ </html>
+ 

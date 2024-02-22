@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/css-doodle/0.38.4/css-doodle.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+  <div class="grid-container"></div>
+  <css-doodle>
+  <style>
+      @grid: 18 / 100vmax / #0a0c27;
+  --hue: calc(180 + 1.5 * @x * @y);
+  background: hsl(var(--hue), 50%, 70%);
+  margin: -.5px;
+  transition: @r(.5s) ease;
+  clip-path: polygon(@pick(
+    '0 0, 100% 0, 100% 100%',
+    '0 0, 100% 0, 0 100%',
+    '0 0, 100% 100%, 0 100%',
+    '100% 0, 100% 100%, 0 100%'
+  ));
+  </style>
+  </css-doodle>
+</body>
+</html>
