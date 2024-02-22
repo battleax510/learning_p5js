@@ -91,13 +91,25 @@
 	border: 2px solid transparent;
 	transition: border-color 0.3s ease, transform 0.5s ease;
 	animation: floatLoop 2s infinite;
+	transform: translateY(-5px);
+}
+@keyframes floatLoop {
+	0%, 100% {
+		transform: translateY(0);
+		/* start and end position: no vertical movement */
+	}
+	50% {
+		transform: translate(-10px);
+	}
 }
 
 .character-selection:hover {
 	border-color: lightblue;
-	transform: translateY(-5px);
+	transition: border-color 0.3s ease, transform 0.5s ease;
+
 	animation: none; 
 }
+
 .player-select-screen {
 	display: flex;
 	flex-wrap: wrap;
