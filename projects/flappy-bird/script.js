@@ -1,8 +1,19 @@
+
+const backgroundMusic = new Audio('sounds_effect/superman.guitar.theme.o7PuveYmEWU.wav');
+backgroundMusic.preload = 'auto';
+backgroundMusic.volume = 0.3; // Adjust the volume as needed
+
+
+
 let move_speed = 3, grativy = 0.5;
 let bird = document.querySelector('.bird');
 let img = document.getElementById('bird-1');
 let sound_point = new Audio('sounds_effect/point.mp3');
 let sound_die = new Audio('sounds_effect/die.mp3');
+backgroundMusic.pause();
+backgroundMusic.currentTime = 0;// let sound_die = new Audio('sounds_effect/die.mp3');
+
+
 
 // getting bird element properties
 let bird_props = bird.getBoundingClientRect();
@@ -68,6 +79,7 @@ document.addEventListener('keydown', (e) => {
         score_val.innerHTML = '0';
         message.classList.remove('messageStyle');
         play();
+        backgroundMusic.play();
     }
 });
 
