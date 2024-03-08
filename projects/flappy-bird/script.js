@@ -1,19 +1,19 @@
+import { heroJumpSounds } from './core/core.hero.sounds';
+import { heroPerishSounds } from './core/core.hero.sounds';
 
 const backgroundMusic = new Audio('sounds_effect/superman.guitar.theme.o7PuveYmEWU.wav');
 backgroundMusic.preload = 'auto';
-backgroundMusic.volume = 0.3; // Adjust the volume as needed
-
-
+backgroundMusic.volume = 0.2; // Adjust the volume as needed
 
 let move_speed = 3, grativy = 0.5;
 let bird = document.querySelector('.bird');
 let img = document.getElementById('bird-1');
-let sound_point = new Audio('sounds_effect/point.mp3');
-let sound_die = new Audio('sounds_effect/die.mp3');
+let flight_sound = new Audio('sounds_effect/flight-sound.wav');
+flight_sound.preload = 'auto';
+flight_sound.volume = 0.3;
 backgroundMusic.pause();
-backgroundMusic.currentTime = 0;// let sound_die = new Audio('sounds_effect/die.mp3');
-
-
+backgroundMusic.currentTime = 0;
+// let sound_die = new Audio('sounds_effect/die.mp3');
 
 // getting bird element properties
 let bird_props = bird.getBoundingClientRect();
@@ -25,24 +25,43 @@ let score_val = document.querySelector('.score_val');
 let message = document.querySelector('.message');
 let score_title = document.querySelector('.score_title');
 
-// Super Hero Sounds
-const sound_one = new Audio("sounds_effect/pvz.super.brainz.voice.clips.IGE-Ht-rLJk.wav-037.wav");
-// Add an Audio element for match
-const sound_two = new Audio("sounds_effect/pvz.super.brainz.voice.clips.IGE-Ht-rLJk.wav-004.wav");
-// Add an Audio Element for mismatch
-const sound_three = new Audio("sounds_effect/pvz.super.brainz.voice.clips.IGE-Ht-rLJk.wav-028.wav");
-// Add an AUdio Element for mismatch
-const sound_four = new Audio("sounds_effect/pvz.super.brainz.voice.clips.IGE-Ht-rLJk.wav-081.wav");
-// Adding  an audio element for when level is complete
-const sound_five = new Audio("sounds_effect/pvz.super.brainz.voice.clips.IGE-Ht-rLJk.wav-018.wav");
+// In your main file
+// import { heroJumpSounds } from './core/core.hero.sounds';
 
-const soundBox = [
+
+// Perish Sounds
+const sound_six = new Audio(heroPerishSounds.perish_zero);
+const sound_seven = new Audio(heroPerishSounds.perish_one);
+const sound_eight = new Audio(heroPerishSounds.perish_two);
+const sound_nine = new Audio(heroPerishSounds.perish_three);
+const sound_ten = new Audio(heroPerishSounds.perish_four);
+const sound_eleven = new Audio(heroPerishSounds.perish_five);
+
+// Jump Sounds
+const sound_one = new Audio(heroJumpSounds.jump_zero);
+const sound_two = new Audio(heroJumpSounds.jump_one);
+const sound_three = new Audio(heroJumpSounds.jump_two);
+const sound_four = new Audio(heroJumpSounds.jump_three);
+const sound_five = new Audio(heroJumpSounds.jump_four);
+
+const perishSounds = [
+    sound_six,
+    sound_seven,
+    sound_eight,
+    sound_nine,
+    sound_ten,
+    sound_eleven
+];
+
+
+
+const jumpSounds = [
     sound_one,
     sound_two,
     sound_three,
     sound_four,
     sound_five
-]
+];
 
 
 
@@ -68,6 +87,7 @@ message.classList.add('messageStyle');
 document.addEventListener('keydown', (e) => {
 
     if (e.key == 'Enter' && game_state != 'Play') {
+        
         document.querySelectorAll('.pipe_sprite').forEach((e) => {
             e.remove();
         });
@@ -100,14 +120,18 @@ function play() {
                     message.innerHTML = 'Game Over'.fontcolor('red') + '<br>Press Enter To Restart';
                     message.classList.add('messageStyle');
                     img.style.display = 'none';
-                    sound_die.play();
-
+                    // sound_die.play();
+                    let randomIndex = getRandomIndex(perishSounds);
+                    randomAudioElement = perishSounds[randomIndex];
+                    console.log(randomAudioElement);
+              
+                    randomAudioElement.play();
                     return;
                 } else {
                     if (pipe_sprite_props.right < bird_props.left && pipe_sprite_props.right + move_speed >= bird_props.left && element.increase_score == '1') {
                         score_val.innerHTML = + score_val.innerHTML + 1;
-                        let randomIndex = getRandomIndex(soundBox);
-                        randomAudioElement = soundBox[randomIndex];
+                        let randomIndex = getRandomIndex(jumpSounds);
+                        randomAudioElement = jumpSounds[randomIndex];
                         console.log(randomAudioElement)
                         randomAudioElement.play()
 
@@ -126,21 +150,25 @@ function play() {
         bird_dy = bird_dy + grativy;
         document.addEventListener('keydown', (e) => {
             if (e.key == 'ArrowUp' || e.key == ' ') {
-                img.src = 'images/superHero-2.png';
+                img.src = 'images/robot-2.png';
                 bird_dy = -7.6;
+                flight_sound.play();
+
 
             }
         });
 
         document.addEventListener('keyup', (e) => {
             if (e.key == 'ArrowUp' || e.key == ' ') {
-                img.src = 'images/superHero-1.png';
+                img.src = 'images/robot-1.png';
             }
         });
 
         if (bird_props.top <= 0 || bird_props.bottom >= background.bottom) {
             game_state = 'End';
             message.style.left = '28vw';
+            backgroundMusic.pause();
+            backgroundMusic.currentTime = 0;
             window.location.reload();
             message.classList.remove('messageStyle');
             return;
