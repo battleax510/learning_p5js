@@ -69,9 +69,11 @@ function getRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
 }
 
-
-// Example usage:
-
+function reloadPageAfterDelay(delay) {
+    setTimeout(function () {
+        window.location.reload();
+    }, delay);
+}
 
 
 
@@ -87,7 +89,7 @@ message.classList.add('messageStyle');
 document.addEventListener('keydown', (e) => {
 
     if (e.key == 'Enter' && game_state != 'Play') {
-        
+
         document.querySelectorAll('.pipe_sprite').forEach((e) => {
             e.remove();
         });
@@ -165,11 +167,17 @@ function play() {
 
         if (bird_props.top <= 0 || bird_props.bottom >= background.bottom) {
             game_state = 'End';
-            message.style.left = '28vw';
+            // message.style.left = '28vw';
             backgroundMusic.pause();
             backgroundMusic.currentTime = 0;
-            window.location.reload();
-            message.classList.remove('messageStyle');
+
+            let randomIndex = getRandomIndex(perishSounds);
+            randomAudioElement = perishSounds[randomIndex];
+            randomAudioElement.play();
+            message.innerHTML = 'Game Over'.fontcolor('red');
+            message.classList.add('messageStyle');
+            reloadPageAfterDelay(3000);
+         
             return;
         }
         bird.style.top = bird_props.top + bird_dy + 'px';
