@@ -86,24 +86,24 @@ let game_state = 'Start';
 img.style.display = 'none';
 message.classList.add('messageStyle');
 
-document.addEventListener('keydown', (e) => {
+// document.addEventListener('keydown', (e) => {
 
-    if (e.key == 'Enter' && game_state != 'Play') {
+//     if (e.key == 'Enter' && game_state != 'Play') {
 
-        document.querySelectorAll('.pipe_sprite').forEach((e) => {
-            e.remove();
-        });
-        img.style.display = 'block';
-        bird.style.top = '40vh';
-        game_state = 'Play';
-        message.innerHTML = '';
-        score_title.innerHTML = 'Score : ';
-        score_val.innerHTML = '0';
-        message.classList.remove('messageStyle');
-        play();
-        backgroundMusic.play();
-    }
-});
+//         document.querySelectorAll('.pipe_sprite').forEach((e) => {
+//             e.remove();
+//         });
+//         img.style.display = 'block';
+//         bird.style.top = '40vh';
+//         game_state = 'Play';
+//         message.innerHTML = '';
+//         score_title.innerHTML = 'Score : ';
+//         score_val.innerHTML = '0';
+//         message.classList.remove('messageStyle');
+//         play();
+//         backgroundMusic.play();
+//     }
+// });
 
 function play() {
     function move() {
