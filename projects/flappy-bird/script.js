@@ -119,7 +119,7 @@ function play() {
             } else {
                 if (bird_props.left < pipe_sprite_props.left + pipe_sprite_props.width && bird_props.left + bird_props.width > pipe_sprite_props.left && bird_props.top < pipe_sprite_props.top + pipe_sprite_props.height && bird_props.top + bird_props.height > pipe_sprite_props.top) {
                     game_state = 'End';
-                    message.innerHTML = 'Game Over'.fontcolor('red') + '<br>Press Enter To Restart';
+                    message.innerHTML = 'Game Over'.fontcolor('red');
                     message.classList.add('messageStyle');
                     img.style.display = 'none';
                     // sound_die.play();
@@ -127,6 +127,7 @@ function play() {
                     randomAudioElement = perishSounds[randomIndex];
                     randomAudioElement.play();
                     backgroundMusic.pause();
+                    reloadPageAfterDelay(2000);
                     return;
                 } else {
                     if (pipe_sprite_props.right < bird_props.left && pipe_sprite_props.right + move_speed >= bird_props.left && element.increase_score == '1') {
@@ -177,7 +178,7 @@ function play() {
             message.innerHTML = 'Game Over'.fontcolor('red');
             message.classList.add('messageStyle');
             reloadPageAfterDelay(3000);
-         
+
             return;
         }
         bird.style.top = bird_props.top + bird_dy + 'px';
