@@ -123,9 +123,8 @@ function play() {
                     // sound_die.play();
                     let randomIndex = getRandomIndex(perishSounds);
                     randomAudioElement = perishSounds[randomIndex];
-                    console.log(randomAudioElement);
-              
                     randomAudioElement.play();
+                    backgroundMusic.pause();
                     return;
                 } else {
                     if (pipe_sprite_props.right < bird_props.left && pipe_sprite_props.right + move_speed >= bird_props.left && element.increase_score == '1') {
